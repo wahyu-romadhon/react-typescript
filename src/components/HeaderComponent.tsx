@@ -1,4 +1,5 @@
 import React from "react";
+import ButtonComponent from "./ButtonComponent";
 
 type headerProps = {
   logo: string;
@@ -9,16 +10,24 @@ type headerProps = {
     id: number;
     book: string;
   }[];
+  setIsDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export default function HeaderComponent(props: headerProps) {
-  console.log("darkkmodeee", props.darkMode);
-  console.log("datassss", props.datas);
   return (
     <div>
       <header className={props.darkMode ? "App-header" : "App-light-header"}>
         <img src={props.logo} className="App-logo" alt="logo" />
         <p>Belajar Typescript {props.name}</p>
+
+        <ButtonComponent
+          label={`Click me, Setting ${
+            props.darkMode ? "Light Mode" : "Dark Mode"
+          }`}
+          handleClick={(event, paramKedua) => {
+            props.setIsDarkMode(!props.darkMode); // jadi ini bisa ganti sesuai click
+          }}
+        />
 
         {props.datas.map((data, index) => {
           return (

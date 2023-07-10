@@ -1,10 +1,12 @@
 import logo from "./logo.svg";
 import "./App.css";
 import HeaderComponent from "./components/HeaderComponent";
+import { useState } from "react";
 
 function App() {
   const date = new Date();
   const getFullYear = date.getFullYear();
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   const datas = [
     { id: 1, book: "Sangkuriang" },
@@ -18,8 +20,9 @@ function App() {
         logo={logo}
         name="Kang Wahyu Studio"
         getFullYear={getFullYear}
-        darkMode={false}
+        darkMode={isDarkMode}
         datas={datas}
+        setIsDarkMode={setIsDarkMode}
       />
     </div>
   );
